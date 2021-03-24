@@ -1,0 +1,72 @@
+{% extends 'users/baseUser.html' %} {% block head_content %}
+<title>{{ title }}</title>
+{% endblock head_content %} {% block content %} {% if error %}
+<p class="alert-danger alert">{{ error }}</p>
+{% endif %}
+
+<div class="mb-3">
+  <form action="{% url 'users:register' %}" method="post">
+    {% csrf_token %} {{ form.as_p }}
+    <div class="d-grid gap-2 mt-4 mx-auto">
+      <button class="btn btn-success" type="submit">Register</button>
+    </div>
+  </form>
+
+  {% comment %} ? form manual {% endcomment %} {% comment %}
+  <form action="{% url 'user_register' %}" method="post">
+    {% csrf_token %}
+
+    <div class="form-group mt-4">
+      <input
+        type="text"
+        class="form-control"
+        name="username"
+        placeholder="Username"
+        autofocus
+      />
+    </div>
+
+    <div class="form-group mt-4">
+      <input
+        type="email"
+        class="form-control"
+        name="email"
+        placeholder="Email"
+      />
+    </div>
+
+    <div class="form-group mt-4">
+      <input
+        type="text"
+        class="form-control"
+        name="first_name"
+        placeholder="Firstname"
+      />
+    </div>
+
+    <div class="form-group">
+      <input
+        type="password"
+        class="form-control mt-4"
+        name="password"
+        placeholder="Password"
+      />
+    </div>
+
+    <div class="form-group">
+      <input
+        type="password"
+        class="form-control mt-4"
+        name="password2"
+        placeholder="Confirm Password"
+      />
+    </div>
+
+    <div class="d-grid gap-2 mt-4 mx-auto">
+      <button class="btn btn-success" type="submit">Register</button>
+    </div>
+  </form>
+  {% endcomment %}
+</div>
+
+{% endblock content %}

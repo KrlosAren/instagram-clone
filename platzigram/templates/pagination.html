@@ -1,0 +1,23 @@
+<nav class="row my-5">
+    <div class="col-md-6 offset-4">
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a href="?page={{ page_obj.previous_page_number }}" class="page-link">Previous</a
+        >
+      </li>
+      {% endif %}
+      <li class="page-item">
+        <a href="#" class="page-link">
+          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </a>
+            </li>
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a href="?page={{ page_obj.next_page_number }}" class="page-link">Next</a
+        >
+      </li>
+      {%endif%}
+    </ul>
+  </div>
+</nav>

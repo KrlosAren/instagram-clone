@@ -1,0 +1,25 @@
+{% extends 'users/baseUser.html' %} {% block head_content %}
+<title>{{ title }}</title>
+{% endblock head_content %} {% block content %} {% if form.errors %}
+<p class='alert-danger alert '>Your usename ands password didn't match. Please try again.</p>
+{% endif %}
+
+<div class="mb-3">
+    <form action="{% url 'users:login' %}" method="post">
+        {% csrf_token %}
+
+        <div class="form-group mt-4">
+            <input type="text" class="form-control" name="username" placeholder="Username" autofocus />
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control mt-4" name="password" placeholder="Password" />
+        </div>
+        <div class="d-grid gap-2 mt-4 mx-auto">
+            <button class="btn btn-primary" type="submit">Sign In</button>
+        </div>
+    </form>
+</div>
+
+<p class="mat-4 text-center">Dont have an account yet? <a href="{% url 'users:register' %}">Sign Up here.</a></p>
+
+{% endblock content %}

@@ -1,0 +1,32 @@
+{% extends "index.html" %} {% block head_content %}
+<title>Platzigram Feed</title>
+{% endblock %} {% block content %}
+<div class="container">
+    <div class="row">
+        {% for post in posts %}
+        <div class="col-sm-12 col-md-4 mt-5 offset-md-4 post-container">
+            <div class="media pt-3 pl-3 pb-1">
+                <a href="{% url 'users:detail' post.user.username %}">
+                    <img class="mr-3 rounded-circle" height="35" src="{{ post.profile.picture.url }}" alt="{{ post.user.get_full_name }}" />
+                </a>
+                <span style="margin-left: 5px" class="media-body"><strong>{{ post.user.username | capfirst }}</strong></span>
+            </div>
+            <a href="post/{{post.slug}}">
+                <img style="width: 100%" src="{{ post.photo.url }}" alt="{{ post.title }}" />
+            </a>
+            <h6 class="ml-1 mt-1">{{ post.title }}</h6>
+            <p class="mt-1 ml-2">
+                <a href="" style="color: #000; font-size: 20px">
+                    <i class="far fa-heart"></i>
+                </a>
+                30 likes
+            </p>
+            <p class="ml-2 mt-0 mb-2">
+                <b>{{post.title}}</b> - <small>{{post.created}}</small>
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% include 'pagination.html' %} {% endblock %}

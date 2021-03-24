@@ -1,0 +1,22 @@
+{% extends "index.html" %}  
+
+{% block head_content %}
+<title>{{title}}</title>
+{% endblock %}
+
+
+
+ {% block content %}
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-md-8 offset-4 mt-5">
+    <input type="hidden" name="pk" value='{{ post.pk }}'>
+      <img src="{{ post.photo.url }}" alt="{{ post.title }}" class="img-fluid" />
+      <p>{{post.title}}</p>
+      <p>{{post.created_at }}</p>
+
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
